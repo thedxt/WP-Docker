@@ -1,7 +1,7 @@
 # Docker
 
 # DXT-Wordpress
-This will create a mariadb container while also creating a container for WordPress
+This will create a mariadb container while also creating a container for WordPress using docker-compose and .env
 
 use .env to define the variables
 ### Variables
