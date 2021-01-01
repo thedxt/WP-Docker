@@ -1,19 +1,15 @@
-# DXT-Wordpress
-This will create a mariadb container while also creating a container for WordPress using docker-compose and .env
+# WP-Docker
+This will create a MariaDB container while also creating a container for WordPress using docker-compose and .env
 
 use .env to define the variables
-### Variables
-- CONTAINER_DB_NAME the name for the database container
-- DB_CONF_PATH where you want /etc/mysql/conf.d to be saved
-- DB_DATA_PATH where you want /var/lib/mysql to be saved
-- MYSQL_ROOT_PASSWORD the root password you want for the database container
-- WP_CORE where you want all the core files of Wordpress to be saved
-- WP_DB the name you want for the database
-- WP_USER the username that will have access and will be defined in wp-config.php
-- WP_PASSWORD the password for WP_USER
-- DB_PORT the external port you want to use for mariadb 3306
-- CONTAINER_WP_NAME the name for the WordPress container
+### .env Variables
+- CONTAINER_NAME the root name for the container _WP will be added to the end for the WordPress container and _DB will be added to the end for the database container
+- DB_DATA_PATH the location where the database will be saved. The default is in the root folder in a folder named mysql
+- MYSQL_ROOT_PASSWORD the root password you want for the database
+- WP_DB_NAME the name you want for the database
+- WP_DB_USER the username that will have access to the WP database (it will be defined in wp-config.php)
+- WP_DB_PASSWORD the password for the database user (it will be defined in wp-config.php)
 - WORDPRESS_TABLE_PREFIX the prefix you want to use to the tables in wordpress
-- HTTP_PORT the external port for 80
-- DOMAINS the name for the external domain
-- LETSENCRYPT_EMAIL the email address for your SSL cert
+- PHP_INI the location for your custom php.ini file. The default is in the root folder /config/php.conf.ini
+- WP_HTML where you want all the HTML files of Wordpress to be saved. The default is in the root folder in a folder named wp-html
+- HTTP_PORT the exposed port you want wordpress to run on

@@ -1,37 +1,32 @@
 version: '3'
 
 services:
- db:
-  container_name: ${CONTAINER_DB_NAME}
+ wpdb:
+  container_name: ${CONTAINER_NAME}_DB
   image: mariadb:latest
   restart: unless-stopped
   volumes:
-    - ${DB_CONF_PATH}:/etc/mysql/conf.d
     - ${DB_DATA_PATH}:/var/lib/mysql
   environment:
    MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
-   MYSQL_DATABASE: ${WP_DB}
-   MYSQL_USER: ${WP_USER}
-   MYSQL_PASSWORD: ${WP_PASSWORD}
-  ports:
-   - ${DB_PORT}:3306
+   MYSQL_DATABASE: ${WP_DB_NAME}
+   MYSQL_USER: ${WP_DB_USER}
+   MYSQL_PASSWORD: ${WP_DB_USER_PASSWORD}
 
  wordpress:
   depends_on:
-    - db
-  container_name: ${CONTAINER_WP_NAME}
-  image: wordpress:latest
+    - wpdb
+  container_name: ${CONTAINER_NAME}_WP
+  image: wordpress:5.6-php7.3-apache
   restart: unless-stopped
   volumes:
-     - ${WP_CORE}:/var/www/html
+     - ${PHP_INI}:/usr/local/etc/php/conf.d/php.ini
+     - ${WP_HTML}:/var/www/html
   environment:
-   WORDPRESS_DB_HOST: db:3306
-   WORDPRESS_DB_NAME: ${WP_DB}
-   WORDPRESS_DB_USER: ${WP_USER}
-   WORDPRESS_DB_PASSWORD: ${WP_PASSWORD}
+   WORDPRESS_DB_HOST: wpdb:3306
+   WORDPRESS_DB_NAME: ${WP_DB_NAME}
+   WORDPRESS_DB_USER: ${WP_DB_USER}
+   WORDPRESS_DB_PASSWORD: ${WP_DB_USER_PASSWORD}
    WORDPRESS_TABLE_PREFIX: ${WORDPRESS_TABLE_PREFIX}
-   VIRTUAL_HOST: ${DOMAINS}
-   LETSENCRYPT_HOST: ${DOMAINS}
-   LETSENCRYPT_EMAIL: ${LETSENCRYPT_EMAIL
   ports:
    - ${HTTP_PORT}:80
