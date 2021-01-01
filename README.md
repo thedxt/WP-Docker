@@ -1,5 +1,5 @@
 # WP-Docker
-This will create a mariadb container while also creating a container for WordPress using docker-compose and .env
+This will create a MariaDB container while also creating a container for WordPress using docker-compose and .env
 
 use .env to define the variables
 ### .env Variables
