@@ -12,4 +12,4 @@ use .env to define the variables
 - WORDPRESS_TABLE_PREFIX the prefix you want to use to the tables in wordpress
 - PHP_INI the location for your custom php.ini file. The default is in the root folder /config/php.conf.ini
 - WP_HTML where you want all the HTML files of Wordpress to be saved. The default is in the root folder in a folder named wp-html
-- HTTP_PORT the exposed port you want
+- HTTP_PORT the exposed port you want wordpress to run on
