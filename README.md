@@ -1,8 +1,8 @@
 # WP-Docker
-This will create a MariaDB container while also creating a container for WordPress using docker-compose and .env
+This will create a WordPress container while also creating a container for MariaDB using docker-compose and enviornment variables
 
-edit the .env to define the variables
 ### .env Variables
+add the correct info for your setup in the .env file
 - ```CONTAINER_NAME``` the root name for the container _WP will be added to the end for the WordPress container and _DB will be added to the end for the database container
 - ```DB_DATA_PATH``` the location where the database will be saved. The default is in the root folder in a folder named mysql
 - ```MYSQL_ROOT_PASSWORD``` the root password you want for the database
