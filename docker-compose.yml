@@ -1,5 +1,3 @@
-version: '3'
-
 services:
  wpdb:
   container_name: ${CONTAINER_NAME}_DB
